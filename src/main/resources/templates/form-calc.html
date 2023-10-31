@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Drake</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        form {
+            width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        input[type="number"] {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+
+        a {
+            display: block;
+            margin-top: 10px;
+            color: #007bff;
+        }
+    </style>
+
+</head>
+<body>
+
+<form th:action="@{/form-calc}" method="post">
+    <label for="r">Количество звёзд, образующихся в год в нашей галактике</label><br>
+    <input type="number" id="r" name="R" th:value ="${R}"><br>
+
+    <label for="fp">Количество звёзд, образующихся в год в нашей галактике</label><br>
+    <input type="number" id="fp" name="fp" min="0" max="100" th:value ="${fp}"><br>
+
+    <label for="ne">Среднее количество планет (и спутников) с подходящими условиями для зарождения цивилизации на
+        звезду, обладающую планетами</label><br>
+    <input type="number" id="ne" name="ne" min="0" th:value ="${ne_}"><br>
+
+    <label for="fl">Вероятность зарождения жизни на планете с подходящими условиями в процентах</label><br>
+    <input type="number" id="fl" name="fl" min="0" max="100" th:value ="${fl}"><br>
+
+    <label for="fi">Вероятность возникновения разумных форм жизни на планете, на которой есть жизнь в
+        процентах</label><br>
+    <input type="number" id="fi" name="fi" min="0" max="100" th:value ="${fi}"><br>
+
+    <label for="fc">Отношение количества планет, разумные жители которых способны к контакту и ищут его, к количеству
+        планет, на которых есть разумная жизнь</label><br>
+    <input type="number" id="fc" name="fc" min="0" max="100" th:value ="${fc}"><br>
+
+    <label for="l">Время, в течение которого разумная жизнь существует, может вступить в контакт и хочет
+        этого</label><br>
+    <input type="number" id="l" name="L" min="0" th:value ="${L}"><br>
+
+    <button type="submit">Посчитать</button>
+
+    <p th:if="${N!=null}">Количество разумных цивилизаций, готовых вступить в контакт: [[${N}]]</p>
+
+    <a th:href="@{/}">Перейти на главную</a>
+</form>
+
+</body>
+</html>
